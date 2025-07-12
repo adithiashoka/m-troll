@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <style>
+        
+        body {
+            font-family: 'Times New Roman', Times, serif, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow-y: auto;
+        }
+        .container {
+            text-align: left;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(2, 1, 30, 0.1);
+            width: 80%;
+            max-width: 800px;
+            font-size: 22px;
+        }
+        .question {
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+        .option {
+            display: flex;
+            align-items: right;
+            margin: 10px 0;
+        }
+        .option span {
+            flex: 1;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .radio-group label {
+        flex: 1;
+        text-align: right;
+        font-size: 15px;
+        }
+        
+        .radio-group span {
+        font-weight: bold;
+        margin-right: 5px;
+        }
+        .option .radio-group {
+            flex: 0.5;
+            justify-content: flex-end;
+
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            padding: 10px 20px;
+        }
+        #result {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="questionnaire-form">
+            <!-- Questions 1-27 -->
+            <div id="q1" class="question active" required>
+                <p>1. How would you describe this child's willingness to start a conversation with adults and peers and continue trying to communicate when he/she is not understood on the first attempt?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) Child almost never begins a conversation with peers or the teacher and never keeps trying if unsuccessful at first.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q1_en" value="1"></label>
+                        <label><span></span><input type="radio" required name="q1_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) Child sometimes begins conversation with either peers or the teacher. If initial efforts fail, he/she often gives up quickly.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q1_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q1_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) Child begins conversations with both peers and teachers on occasions. If initial efforts fail, he/she will sometimes keep trying.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q1_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q1_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Child begins conversations with both peers and teachers. If initial efforts fail, he/she will work hard to be understood.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q1_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q1_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+            
+            <div id="q2" class="question">
+                <p>2. How well does the child communicate personal experiences in a clear and logical way?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) Child is very tentative, only offers a few words, requires you to ask questions. Has difficulty responding to questions you ask.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q2_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q2_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) Child offers some information, but information needed to really understand the event is missing (e.g., where or when it happened, who was present, the sequence of what happened).</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q2_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q2_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) Child offers information and sometimes includes the necessary information to really understand the event.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q2_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q2_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Child freely offers information and tells experiences in a way that is nearly always complete, well sequenced, and comprehensible.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q2_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q2_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+            
+            <div id="q3" class="question">
+                <p>3. How often does the child use a varied vocabulary or try out new words (e.g., heard in stories or from teacher)?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q3_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q3_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q3_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q3_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q3_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q3_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q3_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q3_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+                </div>
+
+            <div id="q4" class="question">
+                <p>4. When the child speaks to adults other than you or the teaching assistant, is he/she understandable?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q4_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q4_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q4_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q4_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q4_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q4_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q4_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q4_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q5" class="question">
+            <p>5. How would you describe this child's pattern of asking questions about topics that interest him/her (e.g., why things happen, why people act the way they do)?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) To your knowledge, the child has never asked an adult a question reflecting curiosity about why things happen or why people do things.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q5_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q5_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii)  On a few occasions the child has asked adults some questions. The discussion that resulted was brief and limited in depth.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q5_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q5_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) On several occasions the child has asked interesting questions. On occasion these have led us to an interesting conversation.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q5_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q5_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Child often asks adults questions reflecting curiosity. These often lead to interesting, extended conversations.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q5_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q5_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q6" class="question">
+            <p>6. How would you describe this child's use of talk while pretending in the house area, when playing with blocks, etc.? Consider the child's use of talk with peers to start pretending and to carry it out.</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) Child rarely or never engages in pretend play or else never talks while pretending.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q6_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q6_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) On occasion the child engages in pretending that includes somes talk. Talk in brief, may only be used when starting the play, and is of limited importance to the on-going play activity.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q6_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q6_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) Child engages in pretending often and conversations are sometimes important to the play. On occasion child engages in some back-and-forth pretend dialogue with another child.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q6_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q6_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Child often talks in elaborate ways while pretending conversations that are carried out “in role” are common and is an important part of the play. Child sometimes steps out of pretend play to give directions to another.</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q6_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q6_kn" value="4"></label>
+                        </div>
+                    </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q7" class="question">
+                <p>7. How often does the child express curiosity about how and why things happen?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q7_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q7_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q7_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q7_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q7_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q7_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q7_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q7_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q8" class="question">
+                <p>8. Can the child recognise letters such as A, C, E etc.?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) None of the letters of the alphabet</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q8_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q8_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) Some of them (up to 10)</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q8_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q8_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) Most of them (up to 20)</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q8_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q8_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) All of them</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q8_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q8_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+                                   
+            <div id="q9" class="question">
+                <p>9. Does the child have a beginning understanding of the relationship between sounds and letters (e.g., the letter B makes a “buh” sound)?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) No</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q9_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q9_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) One or Two</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q9_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q9_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) A few (up to 4 or 5)</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q9_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q9_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Several (6 or more)</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q9_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q9_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+                                        
+            <div id="q10" class="question">
+            <p>10. How would you describe the child's ability to recognise and produce rhymes? E.g. does he know that the words cat and rat rhyme or cat and cup do not rhyme and can he say the words which rhyme with cat. (cat, rat, mat)</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) Child cannot ever say if two words rhyme and cannot produce a rhyme when given examples.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q10_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q10_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) Child occasionally produces or identifies rhymes when given help.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q10_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q10_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) Child spontaneously produces rhymes and can sometimes tell when word pairs rhyme.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q10_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q10_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Child spontaneously rhymes words of more than one syllable and always identifies whether words rhyme.</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q10_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q10_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q11" class="question">
+            <p>11. Can the child appreciate the number of syllables in a word? E.g. , man - go- 2 syllables, Cat - 1 syllable</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q11_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q11_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q11_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q11_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q11_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q11_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q11_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q11_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q12" class="question">
+            <p>12. Can the child appreciate the number of words spoken in a sentence? When asked to clap one time for each word in a sentence, can he do that? E.g., My- house-is-big (4 claps)</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q12_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q12_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q12_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q12_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q12_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q12_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q12_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q12_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q13" class="question">
+            <p>13. How often does the child like to listen to books read in the full group?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q13_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q13_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q13_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q13_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q13_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q13_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q13_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q13_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div id="q14" class="question">
+            <p>14. How often does the child attend to stories read in full or small groups and react in a way that indicates comprehension?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q14_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q14_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q14_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q14_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q14_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q14_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q14_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q14_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+                                                            
+            <div id="q15" class="question">
+            <p>15. How often does the child look at or read books alone or with friends?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NEVER</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q15_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q15_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) RARELY</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q15_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q15_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) SOMETIMES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q15_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q15_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) OFTEN</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q15_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q15_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+                                                                
+            <div id="q16" class="question">
+            <p>16. Does the child recognise his/her own first name in print?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) NO</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q16_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q16_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) YES</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q16_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q16_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+                                                                
+            <div id="q17" class="question">
+            <p>17. Does the child recognise others' names?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) No</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q17_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q17_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) One or two</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q17_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q17_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) A few (up to 4 or 5)</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q17_en" value="3"></label>
+                        <label><span></span><input type="radio" name="q17_kn" value="3"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iv) Several (6 or more)</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q17_en" value="4"></label>
+                        <label><span></span><input type="radio" name="q17_kn" value="4"></label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" onclick="prevQuestion()">Previous</button>
+                    <button type="button" onclick="nextQuestion()">Next</button>
+                </div>
+             </div>
+
+            <div id="q18" class="question">
+            <p>18. Can the child read any other works?</p>
+            <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                <div class="option">
+                    <span>(i) No</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" required name="q18_en" required value="1"></label>
+                        <label><span></span><input type="radio" required name="q18_kn" value="1"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(ii) One or two</span>
+                    <div class="radio-group">
+                        <label><span></span><input type="radio" name="q18_en" value="2"></label>
+                        <label><span></span><input type="radio" name="q18_kn" value="2"></label>
+                    </div>
+                </div>
+                <div class="option">
+                    <span>(iii) A few (up to 4 or 5)</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q18_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q18_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) Several (6 or more)</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q18_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q18_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q19" class="question">
+                <p>19. Can the child sound out words that he/she has not read before?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) No</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q19_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q19_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) Once or twice</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q19_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q19_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) One syllable words often</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q19_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q19_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) Many words</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q19_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q19_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q20" class="question">
+                <p>20. Is the child able to read story books on his/ her own?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) Does not pretend to read</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q20_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q20_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) Pretends to read</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q20_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q20_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) Pretends to read and reads some words</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q20_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q20_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) Read the written words</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q20_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q20_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q21" class="question">
+                <p>21. How often does the child remember the story line or characters in books that he/ she has heard before either at home or in class?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) NEVER</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q21_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q21_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) RARELY</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q21_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q21_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) SOMETIMES</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q21_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q21_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) OFTEN</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q21_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q21_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q22" class="question">
+                <p>22. What does the child's writing look like?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) Only draws or scribbles</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q22_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q22_kn" value="1"></label>
+                        </div>
+                    </div>
+                     <div class="option">
+                        <span>(ii) Some letter-like marks</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q22_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q22_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) Many conventional letters</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q22_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q22_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) Conventional letters and words</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q22_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q22_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q23" class="question">
+                <p>23. Does the child write his or her own name?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) NO</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q23_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q23_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) YES</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q23_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q23_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q24" class="question">
+                <p>24. How often does the child communicate his/ her ideas in writing during play?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) NEVER</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q24_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q24_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) RARELY</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q24_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q24_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) SOMETIMES</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q24_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q24_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) OFTEN</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q24_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q24_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q25" class="question">
+                <p>25. Does the child use initial consonants to identify words in writing? E.g. writes d to mean dog or b to mean bat</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) NEVER</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q25_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q25_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) RARELY</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q25_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q25_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) SOMETIMES</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q25_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q25_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) OFTEN</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q25_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q25_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+
+                <div id="q26" class="question">
+                <p>26. Does the child communicate his/ her ideas in writing in ways other than during play? E.g. on his/her own or in group work</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) NEVER</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q26_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q26_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) RARELY</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q26_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q26_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) SOMETIMES</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q26_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q26_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) OFTEN</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q26_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q26_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="nextQuestion()">Next</button>
+                    </div>
+                </div>
+                
+                <div id="q27" class="question">
+                <p>27. How often does the child incorporate events from classroom experiences or stories into pretending or other talk?</p>
+                <p style= "text-align: right; font-size:15px">English&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;Kannada</p>
+                    <div class="option">
+                        <span>(i) NEVER</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" required name="q27_en" required value="1"></label>
+                            <label><span></span><input type="radio" required name="q27_kn" value="1"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(ii) RARELY</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q27_en" value="2"></label>
+                            <label><span></span><input type="radio" name="q27_kn" value="2"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iii) SOMETIMES</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q27_en" value="3"></label>
+                            <label><span></span><input type="radio" name="q27_kn" value="3"></label>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>(iv) OFTEN</span>
+                        <div class="radio-group">
+                            <label><span></span><input type="radio" name="q27_en" value="4"></label>
+                            <label><span></span><input type="radio" name="q27_kn" value="4"></label>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" onclick="prevQuestion()">Previous</button>
+                        <button type="button" onclick="showResult()">Submit</button>
+                    </div>
+                </div>
+        </form>
+        <div id="result">
+            <p style="text-align: center">Thank you for completing M-Troll</p>
+            <h2 style="color: #4c7faf; text-align: center">RESULTS:</h2>
+            <p id="enScore" name="enScore"></p>
+            <p id="knScore" name="knScore"></p>
+            <p style="text-align: center" id="risk_status" name="risk_status"></p>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 27;
+
+        function showQuestion(n) {
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.getElementById('q' + i).classList.remove('active');
+            }
+            document.getElementById('q' + n).classList.add('active');
+        }
+
+        function nextQuestion() {
+            const currentQuestionElement = document.getElementById('q' + currentQuestion);
+            const enOption = currentQuestionElement.querySelector(`input[name="q${currentQuestion}_en"]:checked`);
+            const knOption = currentQuestionElement.querySelector(`input[name="q${currentQuestion}_kn"]:checked`);
+
+            if (!enOption || !knOption) {
+                alert('Please select one option in both English and Kannada.');
+                return;
+            }
+
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+function showResult() {
+    let enScore = 0;
+    let knScore = 0;
+
+    for (let i = 1; i <= totalQuestions; i++) {
+        const enOption = document.querySelector(`input[name="q${i}_en"]:checked`);
+        const knOption = document.querySelector(`input[name="q${i}_kn"]:checked`);
+
+        if (enOption) enScore += parseInt(enOption.value);
+        if (knOption) knScore += parseInt(knOption.value);
+    }
+
+    const resultMessage = (enScore >= 87 && knScore >= 87)
+        ? 'No risk of learning disability'
+        : 'Child is at risk of learning disability. Kindly refer to a professional for diagnosis.';
+
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('enScore').innerText = `English Score: ${enScore}`;
+    document.getElementById('knScore').innerText = `Kannada Score: ${knScore}`;
+    document.getElementById('risk_status').innerText = resultMessage;
+    document.getElementById('questionnaire-form').style.display = 'none';
+
+    // Send scores to backend
+    const demographicId = localStorage.getItem('demographicId');
+
+fetch(`/submit-form2?id=${demographicId}`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        en_score: enScore,
+        kn_score: knScore
+    })
+})
+.then(response => response.text())
+.then(html => {
+    console.log('Scores submitted to backend');
+    
+})
+.catch(error => {
+    console.error('Failed to submit scores:', error);
+    alert('Something went wrong while saving your scores.');
+});
+
+}
+    </script>
+</body>
+</html>

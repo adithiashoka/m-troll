@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Garamond&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Garamond', serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 90px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container label {
+            color: #4c7faf;
+            display: block;
+            margin: 20px 20px 5px;
+            font-size: 17px;
+        }
+        .container input, .container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .container select {
+            font-size: 12px;
+            text-align: center; 
+        }
+        .languages {
+            display: flex;
+            justify-content: space-between;
+        }
+        .languages .language-container {
+            width: 45%;
+        }
+        .submit-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 12px;
+            color: white;
+            background-color: #4c7faf;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="demographic">
+            <label for="student_name">Student Name</label>
+            <input type="text" id="student_name" name="student_name" required>
+
+            <label for="student_age">Student Age</label>
+            <input type="number" id="student_age" name="student_age" min="5" max="7" required>
+
+            <label for="student_class">Student Class</label> 
+            <select id="student_class" name="student_class" required>
+                <option value="junior-kg">Junior KG</option>
+                <option value="senior-kg">Senior KG</option>
+                <option value="first-grade">First Grade</option>
+                <option value="second-grade">Second Grade</option>
+            </select>
+
+            <label for="student_gender">Student Gender</label>
+            <select id="student_gender" name="student_gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label for="school_name">School Name</label>
+            <input type="text" id="school_name" name="school_name" required>
+
+            <label for="teacher_name">Teacher/Evaluator's Name</label>
+            <input type="text" id="teacher_name" name="teacher_name" required>
+
+            <div class="languages">
+                <div class="language-container">
+                    <label for="primary_language">Student's primary language</label>
+                    <select id="primary_language" name="primary_language" required onchange="toggleOtherInput(this, 'primary_language_other')">
+                        <option value="english">English</option>
+                        <option value="kannada">Kannada</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="primary_language_other" name="primary_language_other" placeholder="Please specify" style="display: none;">
+                </div>
+                <div class="language-container">
+                    <label for="secondary_language">Student's secondary language</label>
+                    <select id="secondary_language" name="secondary_language" required onchange="toggleOtherInput(this, 'secondary_language_other')">
+                        <option value="english">English</option>
+                        <option value="kannada">Kannada</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="secondary_language_other" name="secondary_language_other" placeholder="Please specify" style="display: none;">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+    <script>
+        function toggleOtherInput(selectElement, inputId) {
+            const inputElement = document.getElementById(inputId);
+            if (selectElement.value === 'other') {
+                inputElement.style.display = 'block';
+                inputElement.required = true;
+            } else {
+                inputElement.style.display = 'none';
+                inputElement.required = false;
+            }
+        }
+        document.getElementById('demographic').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+const plainData = Object.fromEntries(formData.entries());
+
+fetch('/submit-form1', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(plainData)
+})
+
+    .then(response => {
+        if (!response.ok) throw new Error('Server error');
+        return response.json();
+    })
+    .then(data => {
+        console.log('Demographic submitted:', data.id);
+        localStorage.setItem('demographicId', data.id);
+        window.location.href = 'testfinal.html';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Submission failed');
+    });
+});
+
+    </script>
+</body>
+</html>
